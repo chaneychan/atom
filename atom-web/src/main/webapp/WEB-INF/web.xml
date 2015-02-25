@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd "
+         version="2.5">
+    <context-param>
+        <param-name>logbackConfigLocation</param-name>
+        <param-value>/WEB-INF/logback.xml</param-value>
+    </context-param>
+
+
+    <listener>
+        <description>logback Listener</description>
+        <listener-class>com.dream.hijobs.web.listener.LogbackConfigListener</listener-class>
+    </listener>
+    
+    
+
+
+	<session-config>
+    	<session-timeout>500</session-timeout>
+  	</session-config>
+
+	<!-- 通过错误码来配置error-page ,配置了当系统发生404错误时，跳转到错误处理页面NotFound.jsp。 -->
+	<error-page> 
+	    <error-code>404</error-code> 
+	    <location>/notfound.html</location> 
+	</error-page> 
+	<error-page> 
+	    <error-code>503</error-code> 
+	    <location>/notfound.html</location> 
+	</error-page> 
+	<!--  通过异常的类型配置error-page ,配置了当系统发生java.lang.NullException（即空指针异常）时，跳转到错误处理页面error.jsp  -->
+	<error-page> 
+	    <exception-type>java.lang.Exception</exception-type> 
+	    <location>/notfound.html</location> 
+	</error-page>
+	<welcome-file-list>
+	    <welcome-file>/index.html</welcome-file>
+	</welcome-file-list>
+</web-app>
